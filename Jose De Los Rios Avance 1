@@ -1,9 +1,8 @@
 #include<iostream>
 using namespace std;
 
-int main() {
-
-
+int main() 
+{
 	int opcion;
 	int numcit;
 	int menu = 1;
@@ -13,12 +12,13 @@ int main() {
 	float preciou;
 	float TOTAL;
 	char tratamiento[30];
-	int agendar=1;
+	int agendar = 1;
 	float hra;
 	int cant;
 	//MENU
 
-	while (menu == 1) {
+	do 
+	{
 		cout << "\t\tMENU" << endl;
 		cout << "Escriba el numero dependiendo de lo que usted requiera\n";
 
@@ -31,20 +31,23 @@ int main() {
 
 		cin >> opcion;
 
-		switch (opcion) {
+		switch (opcion) 
+		{
 
 		case 1://Agendar Cita
-			while (agendar == 1) {
+			agendar = 1;
+			while (agendar == 1) 
+			{
 				cout << "Escriba su nombre completo" << endl;
 				cin >> nombre;
-			cin.getline(nombre, 500);
+				cin.getline(nombre, 500);
 				cout << "Numero de cita" << endl;
 				cin >> numcit;
 				cout << "Hora del tratamiento (Formato 24hrs, separar por punto ejemplo: 23.32)" << endl;
 				cin >> hra;
 				cout << "Selecccione el tratamiento que solicita" << endl;
 				cin >> tratamiento;
-			cin.getline(tratamiento, 500);
+				cin.getline(tratamiento, 500);
 				cout << "Descripcion" << endl;
 				cin >> descripcion;
 				cin.getline(descripcion, 500);
@@ -55,19 +58,20 @@ int main() {
 				cout << "Precio unitario por sesion" << endl;
 				cin >> preciou;
 				cout << "TOTAL:" << endl;
-				TOTAL = (preciou*cant) + precio;
+				TOTAL = (preciou * cant) + precio;
 				cout << TOTAL << endl;
-				
+
 				cout << "Desea agendar otra cita?\n1-si\n2-no" << endl;
 				cin >> agendar;
-				if (agendar == 2) {
+				if (agendar == 2) 
+				{
 					cout << "Desea volver al menu?\n1-si\n2-no" << endl;
 					cin >> menu;
-									}
+				}
 			}
-			break;
+		break;
 
-	 	case 2: cout << "aun no definido" << endl;
+		case 2: cout << "aun no definido" << endl;
 			break;
 
 		case 3:cout << "aun no definido" << endl;
@@ -79,14 +83,13 @@ int main() {
 		case 5: cout << "aun no definido" << endl;
 			break;
 
-		case 6: menu=2;
+		case 6: menu = 2;
 			break;
 
 		default: cout << "Respuesta no valida" << endl;
 			cout << "Desea volver al menu?\n1-si\n2-no" << endl;
 			cin >> menu;
 		}
-
-		
-	}
+	} 
+	while (menu == 1);
 }
