@@ -68,12 +68,12 @@ int main()
 					cin.ignore();
 					getline(cin, dentista[i].tratamiento);
 
+					cout << "Precio unitario del tratamiento" << endl;
+					cin >> dentista[i].precio;
+					
 					cout << "Descripcion" << endl;
 					cin.ignore();
 					getline(cin, dentista[i].descripcion);
-
-					cout << "Precio unitario del tratamiento" << endl;
-					cin >> dentista[i].precio;
 
 					cout << "Cantidad del tratamiento (cantidad de sesiones)" << endl;
 					cin >> dentista[i].cant;
