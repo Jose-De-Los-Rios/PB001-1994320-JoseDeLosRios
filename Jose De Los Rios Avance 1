@@ -1,23 +1,38 @@
 #include<iostream>
+#include<stdio.h>
+#include<string>
 using namespace std;
 
-int main() 
-{
-	int opcion;
-	int numcit;
-	int menu = 1;
-	char nombre[30];
-	char descripcion[100];
-	float precio;
-	float preciou;
-	float TOTAL;
-	char tratamiento[30];
-	int agendar = 1;
-	float hra;
-	int cant;
-	//MENU
+/**/
 
-	do 
+
+struct citas {
+	int numcit;
+	string nombre;
+	string descripcion;
+	float precio;//float
+	float preciou;//float
+	float TOTAL;//float
+	string tratamiento;
+	float hra;//float
+	int cant;
+};
+
+int main()
+{
+	
+	int i;
+	int opcion;
+	int menu = 1;
+	int agendar = 1;
+	int a = 0;
+	int j = 0;
+	int modif;
+	
+	//MENU
+	citas dentista[3];
+
+	do
 	{
 		cout << "\t\tMENU" << endl;
 		cout << "Escriba el numero dependiendo de lo que usted requiera\n";
@@ -31,53 +46,163 @@ int main()
 
 		cin >> opcion;
 
-		switch (opcion) 
+		switch (opcion)
 		{
 
 		case 1://Agendar Cita
 			agendar = 1;
-			while (agendar == 1) 
+			while (agendar == 1)
 			{
-				cout << "Escriba su nombre completo" << endl;
-				cin >> nombre;
-				cin.getline(nombre, 500);
-				cout << "Numero de cita" << endl;
-				cin >> numcit;
-				cout << "Hora del tratamiento (Formato 24hrs, separar por punto ejemplo: 23.32)" << endl;
-				cin >> hra;
-				cout << "Selecccione el tratamiento que solicita" << endl;
-				cin >> tratamiento;
-				cin.getline(tratamiento, 500);
-				cout << "Descripcion" << endl;
-				cin >> descripcion;
-				cin.getline(descripcion, 500);
-				cout << "Precio unitario del tratamiento" << endl;
-				cin >> precio;
-				cout << "Cantidad del tratamiento (cantidad de sesiones)" << endl;
-				cin >> cant;
-				cout << "Precio unitario por sesion" << endl;
-				cin >> preciou;
-				cout << "TOTAL:" << endl;
-				TOTAL = (preciou * cant) + precio;
-				cout << TOTAL << endl;
-
-				cout << "Desea agendar otra cita?\n1-si\n2-no" << endl;
-				cin >> agendar;
-				if (agendar == 2) 
+				for (i = a;i < 3;i++)
 				{
-					cout << "Desea volver al menu?\n1-si\n2-no" << endl;
-					cin >> menu;
+					cout << "Escriba su nombre completo" << endl;
+					cin.ignore();
+					getline(cin, dentista[i].nombre);
+					
+					cout << "Numero de cita " <<i+1<< endl;
+					
+					cout << "Hora del tratamiento (Formato 24hrs, separar por punto ejemplo: 23.32)" << endl;
+					cin >> dentista[i].hra;
+
+					cout << "Selecccione el tratamiento que solicita" << endl;
+					cin.ignore();
+					getline(cin, dentista[i].tratamiento);
+
+					cout << "Descripcion" << endl;
+					cin.ignore();
+					getline(cin, dentista[i].descripcion);
+
+					cout << "Precio unitario del tratamiento" << endl;
+					cin >> dentista[i].precio;
+
+					cout << "Cantidad del tratamiento (cantidad de sesiones)" << endl;
+					cin >> dentista[i].cant;
+
+					cout << "Precio unitario por sesion" << endl;
+					cin >> dentista[i].preciou;
+					cout << "TOTAL:" << endl;
+					dentista[i].TOTAL = (dentista[i].preciou * dentista[i].cant) + dentista[i].precio;
+					cout << dentista[i].TOTAL << endl;
+
+					a = i + 1;
+					
+
+					cout << "Desea agendar otra cita?\n1-si\n2-no" << endl;
+					cin >> agendar;
+					if (agendar == 2)
+					{
+						i = 3;
+						cout << "Desea volver al menu?\n1-si\n2-no" << endl;
+						cin >> menu;
+						
+					}
+					else
+						if(i==2)
+						{
+							cout << "ya llego al limite de citas" << endl;
+							agendar = 2;
+						}
+
+				}
+				if (a >= 3)
+				{
+					cout << "ya llego al limite de citas" << endl;
+					agendar = 2;
 				}
 			}
-		break;
+			break;
 
-		case 2: cout << "aun no definido" << endl;
+		case 2: cout << "**Modificar cita**\n" << endl;
+			cout << "Ingrese el numero de registro que desea modificar:\n" << endl;
+			cin >> j;
+			j = j - 1;
+
+			cout << "Qué requieres modificar?\n1-Nombre\n2-Hora del Tratamiento\n3-Tratamiento\n4-Descripcion" << endl;
+			cout<<"5-Precio unitario del tratamiento\n6-Cantidad de tratamiento\n7-Precio por sesion"<<endl;
+			cin >> modif;
+
+			switch (modif)
+			{
+				case 1: 
+					for (i = j;i <= j;i++)
+					{
+						cout << "Escriba su nombre completo" << endl;
+						cin.ignore();
+						getline(cin, dentista[i].nombre);
+					}
+					break;
+				case 2:
+					for (i = j;i <= j;i++)
+					{
+						cout << "Hora del tratamiento (Formato 24hrs, separar por punto ejemplo: 23.32)" << endl;
+						cin >> dentista[i].hra;
+
+					}
+					break;
+				case 3:
+					for (i = j;i <= j;i++)
+					{
+						cout << "Selecccione el tratamiento que solicita" << endl;
+						cin.ignore();
+						getline(cin, dentista[i].tratamiento);
+
+					}
+					break;
+				case 4:
+					for (i = j;i <= j;i++)
+					{
+						cout << "Descripcion" << endl;
+						cin.ignore();
+						getline(cin, dentista[i].descripcion);
+					}
+					break;
+				case 5:
+					for (i = j;i <= j;i++)
+					{
+						cout << "Precio unitario del tratamiento" << endl;
+						cin >> dentista[i].precio;
+					}
+				case 6:
+					for (i = j;i <= j;i++)
+					{
+						cout << "Cantidad del tratamiento (cantidad de sesiones)" << endl;
+						cin >> dentista[i].cant;
+					}
+					break;
+				case 7:
+					for (i = j;i <= j;i++)
+					{
+						cout << "Precio unitario por sesion" << endl;
+						cin >> dentista[i].preciou;
+					}
+					break;
+				default: cout << "Valor invalido" << endl;
+
+			}
+			dentista[i].TOTAL = (dentista[i].preciou * dentista[i].cant) + dentista[i].precio;
 			break;
 
 		case 3:cout << "aun no definido" << endl;
 			break;
 
-		case 4: cout << "aun no definido" << endl;
+		case 4: cout << "Lista de citas vigentes\n\n" << endl;
+			
+			for (i = 0;i < a;i++)
+			{
+			cout << "Numero de cita " << i + 1 << endl;
+			cout << "Nombre del paciente\n"<<dentista[i].nombre << endl;
+			
+
+			cout << "Hora del tratamiento\n" << dentista[i].hra << endl;
+			cout << "Tratamiento\n" << dentista[i].tratamiento << endl;
+			cout << "Descripcion\n" << dentista[i].descripcion << endl;
+
+			dentista[i].TOTAL = (dentista[i].preciou * dentista[i].cant) + dentista[i].precio;
+			cout << "Total: \n" << dentista[i].TOTAL << endl;
+			cout << "\n\n" << endl;
+			
+			}
+
 			break;
 
 		case 5: cout << "aun no definido" << endl;
@@ -90,6 +215,5 @@ int main()
 			cout << "Desea volver al menu?\n1-si\n2-no" << endl;
 			cin >> menu;
 		}
-	} 
-	while (menu == 1);
+	} while (menu == 1);
 }
