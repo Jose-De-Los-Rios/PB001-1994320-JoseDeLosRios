@@ -117,7 +117,7 @@ int main()
 			cin >> j;
 			j = j - 1;
 
-			cout << "Qué requieres modificar?\n1-Nombre\n2-Hora del Tratamiento\n3-Tratamiento\n4-Descripcion" << endl;
+			cout << "Que requieres modificar?\n1-Nombre\n2-Hora del Tratamiento\n3-Tratamiento\n4-Descripcion" << endl;
 			cout<<"5-Precio unitario del tratamiento\n6-Cantidad de tratamiento\n7-Precio por sesion"<<endl;
 			cin >> modif;
 
