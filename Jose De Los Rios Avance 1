@@ -291,6 +291,7 @@ void modificar()
 			cout << "Escriba su nombre completo" << endl;
 			cin.ignore();
 			getline(cin, nombre[i]);
+			validar(nombre[i]);
 		}
 		break;
 	case 2:
@@ -340,6 +341,7 @@ void modificar()
 			cout << "Selecccione el tratamiento que solicita" << endl;
 			while (getchar() != '\n');
 			getline(cin, tratamiento[i]);
+			validar(tratamiento[i]);
 
 		}
 		break;
@@ -349,6 +351,7 @@ void modificar()
 			cout << "Descripcion" << endl;
 			while (getchar() != '\n');
 			getline(cin, descripcion[i]);
+			validar(descripcion[i]);
 		}
 		break;
 	case 5:
