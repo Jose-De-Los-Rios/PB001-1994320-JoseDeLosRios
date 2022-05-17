@@ -14,6 +14,7 @@ void lista();
 void modificar();
 void eliminar();
 void archivo();
+int validar(string);
 
 int i = 0, j, citas = 0, * hora, * minuto, horavalida, validacion;;
 int agendas;
@@ -115,6 +116,7 @@ void agendar()
 		cout << "Escriba su nombre completo" << endl;
 		cin.ignore();
 		getline(cin, nombre[i]);
+		validar(nombre[i]);
 		cout << "-----" << endl;
 
 		cout << "Numero de cita " << i + 1 << endl;
@@ -164,6 +166,7 @@ void agendar()
 		cout << "Selecccione el tratamiento que solicita" << endl;
 		while (getchar() != '\n');
 		getline(cin, tratamiento[i]);
+		validar(tratamiento[i]);
 		cout << "-----" << endl;
 
 		do
@@ -187,6 +190,7 @@ void agendar()
 		cout << "Descripcion de la cita" << endl;
 		while (getchar() != '\n');
 		getline(cin, descripcion[i]);
+		validar(descripcion[i]);
 		cout << "-----" << endl;
 
 		do
@@ -470,4 +474,21 @@ void archivo()
 
 	}
 	archivo.close();
+}
+int validar(string x)
+{
+	int n = 0;
+	char c;
+	for (n;n < x.size();n++)
+	{
+		c = x[n];
+		if (isalpha(c) == 0)
+		{
+			if (isspace(c) == 0) {
+				cout << "El dato no es valido, ingrese solo letras" << endl;
+				system("pause");
+				return main();
+			}
+		}
+	}
 }
